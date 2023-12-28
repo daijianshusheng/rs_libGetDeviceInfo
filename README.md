@@ -16,15 +16,14 @@ mac
 
 2.Import into your project
 
-extern crate GetDeviceInfo;
+extern crate get_local_info;
 
 fn main() {
-    println!("{}", GetDeviceInfo::get_pc_net_card_name());
-    println!("{}", GetDeviceInfo::get_pc_ipv4());
-    println!("{}", GetDeviceInfo::get_pc_ipv6());
-    println!("your mac:{}", GetDeviceInfo::get_pc_mac());
+    println!("{}", get_local_info::get_pc_net_card_name());
+    println!("{}", get_local_info::get_pc_ipv4());
+    println!("{}", get_local_info::get_pc_ipv6());
+    println!("your mac:{}", get_local_info::get_pc_mac());
 }
-
 
 # About the Author
 * Liu Qiang in Wuhan, China
