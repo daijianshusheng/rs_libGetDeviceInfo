@@ -12,7 +12,7 @@ IPv6
 mac
 
 # How to use
-1.cargo add GetLocalInfo
+1.cargo add get_local_info
 
 2.Import into your project
 
