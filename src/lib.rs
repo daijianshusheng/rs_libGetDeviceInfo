@@ -6,8 +6,17 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
-pub mod unit;
-use unit::*;
+extern crate pnet;
+use pnet::datalink::NetworkInterface;
+
+pub mod netcard;
+pub mod system;
+use netcard::*;
+use system::*;
+
+pub fn get_pc_net_card_info() -> Vec<NetworkInterface> {
+    return get_ac_net_card_info();
+}
 
 pub fn get_pc_net_card_name()->String{
     return get_ac_net_card_name().to_string();
@@ -23,4 +32,8 @@ pub fn get_pc_ipv6()->String{
 
 pub fn get_pc_mac()->String{
     return get_ac_mac().to_string();
+}
+
+pub fn get_pc_system_ver(osname:&str) -> String{
+    return get_system_ver(osname).to_string();
 }

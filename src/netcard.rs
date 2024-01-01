@@ -8,8 +8,14 @@
 extern crate pnet;
 use pnet::datalink;
 use pnet::ipnetwork;
+use pnet::datalink::NetworkInterface;
 use std::net::Ipv4Addr;
 use std::net::Ipv6Addr;
+
+pub fn get_ac_net_card_info() -> Vec<NetworkInterface>{
+    let interfaces = datalink::interfaces();
+    return interfaces;
+}
 
 pub fn get_ac_net_card_name() -> String{
     let mut r = "0".to_string();
@@ -24,6 +30,7 @@ pub fn get_ac_net_card_name() -> String{
         if !ip_v4.is_empty() && !interface.is_loopback() && interface.is_running() && interface.is_up() {
             r= interface.name;
         }     
+       
     }
     return r.to_string();
 }
