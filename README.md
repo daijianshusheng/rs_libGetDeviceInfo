@@ -28,11 +28,13 @@
 extern crate get_local_info;
 
 fn main() {
-
     println!("{}", get_local_info::get_pc_net_card_name());
     println!("{}", get_local_info::get_pc_ipv4());
     println!("{}", get_local_info::get_pc_ipv6());
-    println!("your mac:{}", get_local_info::get_pc_mac());
+    println!("{}", get_local_info::get_pc_mac());
+    println!("{:?}", get_local_info::get_pc_net_card_info());
+    let osname = "kylin";
+    println!("{}", get_local_info::get_pc_system_ver(osname));
 }
 ```
 
