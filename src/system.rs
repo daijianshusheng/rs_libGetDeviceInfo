@@ -8,6 +8,23 @@
 pub mod pubunit;
 use pubunit::*;
 
+//check proccess name
+pub fn get_system_check_pname(osn:&str) -> String{
+    let res;
+    let command = "ps -aux |grep ";
+    let tmpcom = command.to_owned() + &osn;
+    let allcom = tmpcom + "|grep -v grep |awk '{for(i=10+1;i<=NF;i++)printf $i}'";
+    let os_ver = doshell_out(&allcom);
+    if os_ver.chars().count() !=0 {
+        let res_tmp = os_ver;
+        res = res_tmp.to_string();
+    } else {
+        res = "can not find proccess name".to_string();
+    } 
+    return res.to_string();
+}
+
+//Get system version
 pub fn get_system_ver(osn:&str) -> String{
     let res;
     match osn{
@@ -20,11 +37,28 @@ pub fn get_system_ver(osn:&str) -> String{
                 let res_tmp = os_ver.trim();
                 res = res_tmp.to_string();
             }  else {
-                res = "err".to_string();
+                res = "Not a ubuntu operating system".to_string();
             } 
         },
         "uos"=> {
-            res = "uos ok".to_string();
+            let command = "cat /etc/product-info";
+            let os_ver = doshell_out(command);
+            if os_ver.chars().count() !=0 {
+                let command = "cat /etc/os-version";
+                let os_ver = doshell_out(command);
+                if os_ver.chars().count() !=0 {
+                    let fname = "osver.ini";
+                    write_conf(&fname,&os_ver);
+                    let ver_pro = read_conf(fname,"Version","EditionName[zh_CN]");
+                    let ver_no = read_conf(fname,"Version","MinorVersion");
+                    let res_tmp = ver_pro+ "(" + &ver_no + ")";
+                    res = res_tmp.to_string();
+                } else {
+                    res = "err".to_string();
+                }
+             } else {
+                res = "Not a UOS operating system".to_string();
+            }
         },
         "kylin"=> {
             let command = "cat /etc/.kyinfo";
@@ -34,7 +68,7 @@ pub fn get_system_ver(osn:&str) -> String{
                 write_conf(&fname,&os_ver);
                 res = read_conf(fname,"dist","milestone");
             }  else {
-                res = "err".to_string();
+                res = "Not a kylin operating system".to_string();
             } 
         },
         //&_ => todo!(),

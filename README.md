@@ -2,7 +2,7 @@
 
 # Project Introduction
 
-* get_local_info is a Rust crate that obtains linux device information,Its goal is to solve the difficulty of obtaining Linux system device information.Support Chinese operating systems such as KyLin, UOS, HarmonyOS, etc
+* get_local_info is a Rust crate that obtains linux device information,Its goal is to solve the difficulty of obtaining Linux local information.Support Chinese operating systems such as KyLin, UOS, HarmonyOS, etc
 
 	Project maintenance: long-term
 
@@ -17,7 +17,8 @@
 
 3.Get system version
 * Kylin10 supports 2017 and above
-* Ubuntu supports 22.04 and above
+* Ubuntu supports 18.04 and above
+* UOS20 supports 1020 and above
 
 # How to use
 1.cargo add get_local_info
@@ -32,8 +33,10 @@ fn main() {
     println!("{}", get_local_info::get_pc_ipv4());
     println!("{}", get_local_info::get_pc_ipv6());
     println!("{}", get_local_info::get_pc_mac());
+    //Obtain network interface information
     println!("{:?}", get_local_info::get_pc_net_card_info());
-    let osname = "kylin";
+    //osname:ubuntu or uos or kylin
+    let osname = "uos";  
     println!("{}", get_local_info::get_pc_system_ver(osname));
 }
 ```

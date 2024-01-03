@@ -37,3 +37,7 @@ pub fn get_pc_mac()->String{
 pub fn get_pc_system_ver(osname:&str) -> String{
     return get_system_ver(osname).to_string();
 }
+
+pub fn get_pc_system_check_pname(osname:&str) -> String{
+    return get_system_check_pname(osname).to_string();
+}
