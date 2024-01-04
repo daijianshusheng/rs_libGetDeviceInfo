@@ -38,10 +38,14 @@ fn main() {
     println!("{}", get_local_info::get_pc_ipv6());
     println!("{}", get_local_info::get_pc_mac());
     println!("{:?}", get_local_info::get_pc_net_card_info());
+    // osname: ubuntu or uos or kylin
     let osname = "uos";
     println!("{}", get_local_info::get_pc_system_ver(osname));
+    //check proccess name
     let pname = "gnome";
     println!("{}", get_local_info::get_pc_system_check_pname(pname));
+    // flase is Real machine, true is vm
+    println!("{}", get_local_info::get_pc_system_is_vm());
 }
 ```
 
