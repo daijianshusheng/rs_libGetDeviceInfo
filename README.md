@@ -8,7 +8,7 @@
 
 # Current features:
 1.Network function
-1.Obtain activity network card information:
+1.1 Obtain activity network card information:
 * Netcard name
 * IPv4
 * IPv6
@@ -54,4 +54,4 @@ fn main() {
 * crates: <https://crates.io/crates/get_local_info>
 * github: <https://github.com/daijianshusheng/rs_libGetDeviceInfo>
 * mail: <liulcsy@qq.com>
-* create time：2023.12.28
+* Created on 2023.12.28
