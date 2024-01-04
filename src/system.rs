@@ -8,15 +8,25 @@
 pub mod pubunit;
 use pubunit::*;
 
+// flase is Real machine
+pub fn get_system_is_vm() -> bool{
+    let command = "systemd-detect-virt";
+	let bret = doshell_out(command);
+	if bret == "none" {
+		return false;
+	}
+	return true;
+}
+
 //check proccess name
 pub fn get_system_check_pname(osn:&str) -> String{
     let res;
     let command = "ps -aux |grep ";
     let tmpcom = command.to_owned() + &osn;
     let allcom = tmpcom + "|grep -v grep |awk '{for(i=10+1;i<=NF;i++)printf $i}'";
-    let os_ver = doshell_out(&allcom);
-    if os_ver.chars().count() !=0 {
-        let res_tmp = os_ver;
+    let pname = doshell_out(&allcom);
+    if pname.chars().count() !=0 {
+        let res_tmp = pname;
         res = res_tmp.to_string();
     } else {
         res = "can not find proccess name".to_string();

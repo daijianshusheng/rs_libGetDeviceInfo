@@ -41,3 +41,6 @@ pub fn get_pc_system_ver(osname:&str) -> String{
 pub fn get_pc_system_check_pname(osname:&str) -> String{
     return get_system_check_pname(osname).to_string();
 }
+pub fn get_pc_system_is_vm() -> bool{
+    return get_system_is_vm();
+}

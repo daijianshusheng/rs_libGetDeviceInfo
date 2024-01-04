@@ -54,7 +54,7 @@ dependencies = [
 
 [[package]]
 name = "get_local_info"
-version = "0.1.3"
+version = "0.1.5"
 dependencies = [
  "pnet",
  "rust-ini",

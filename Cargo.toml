@@ -1,6 +1,6 @@
 [package]
 name = "get_local_info"
-version = "0.1.4"
+version = "0.1.5"
 authors = ["liuqiang <liulcsy@qq.com>"]
 description = "Getlocalinfo is a Rust crate that obtains local information"
 license = "MIT OR Apache-2.0"
