@@ -5,14 +5,15 @@
 // <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
-
 extern crate pnet;
 use pnet::datalink::NetworkInterface;
 
 pub mod netcard;
 pub mod system;
+pub mod check_av;
 use netcard::*;
 use system::*;
+use check_av::*;
 
 pub fn get_pc_net_card_info() -> Vec<NetworkInterface> {
     return get_ac_net_card_info();
@@ -41,6 +42,12 @@ pub fn get_pc_system_ver(osname:&str) -> String{
 pub fn get_pc_system_check_pname(osname:&str) -> String{
     return get_system_check_pname(osname).to_string();
 }
+
 pub fn get_pc_system_is_vm() -> bool{
     return get_system_is_vm();
 }
+
+pub fn get_pc_check_antiviruslib(osname:&str) -> String{
+    return get_check_antivirus(osname).to_string();
+}
+

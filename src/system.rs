@@ -86,5 +86,3 @@ pub fn get_system_ver(osn:&str) -> String{
     }
     return res.to_string();
 }
-
-
