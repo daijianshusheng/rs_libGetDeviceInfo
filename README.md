@@ -49,6 +49,9 @@ fn main() {
     println!("{}", get_local_info::get_pc_system_check_pname(pname));
     // flase is Real machine, true is vm
     println!("{}", get_local_info::get_pc_system_is_vm());
+    // Obtain the update time of the antivirus database
+    let antiname = "topsec";
+    println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));
 }
 ```
 
