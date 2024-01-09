@@ -8,12 +8,13 @@
 
 # Current features:
 1.Network function
-* 1.1 Obtain activity network card information:
+
+1.1 Obtain activity network card information:
 * Netcard name
 * IPv4
 * IPv6
 * mac
-* 1.2 Obtain network interface information
+1.2 Obtain network interface information
 
 2.Get system version
 * Kylin10 supports 2017 and above
@@ -23,6 +24,7 @@
 3.System function
 * Process detection 
 * Virtual Machine Detection
+* Dual system detection
 
 4.Security information detection
 * topsec Antivirus Database Date Detection
@@ -48,7 +50,9 @@ fn main() {
     let pname = "gnome";
     println!("{}", get_local_info::get_pc_system_check_pname(pname));
     // flase is Real machine, true is vm
-    println!("{}", get_local_info::get_pc_system_is_vm());
+    println!("Running in VM:{}", get_local_info::get_pc_system_is_vm());
+     // true is multi os
+    println!("multi os:{}", get_local_info::get_pc_system_is_d_sys());
     // Obtain the update time of the antivirus database
     let antiname = "topsec";
     println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));

@@ -18,6 +18,16 @@ pub fn get_system_is_vm() -> bool{
 	return true;
 }
 
+// true is Double System
+pub fn get_system_is_d_sys() -> bool{
+    let command = "sudo os-prober";
+	let res = doshell_out(command);
+    if res.chars().count() == 0 {
+		return false;
+	}
+	return true;
+}
+
 //check proccess name
 pub fn get_system_check_pname(osn:&str) -> String{
     let res;

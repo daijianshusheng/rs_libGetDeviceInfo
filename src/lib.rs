@@ -47,6 +47,10 @@ pub fn get_pc_system_is_vm() -> bool{
     return get_system_is_vm();
 }
 
+pub fn get_pc_system_is_d_sys() -> bool{
+    return get_system_is_d_sys();
+}
+
 pub fn get_pc_check_antiviruslib(osname:&str) -> String{
     return get_check_antivirus(osname).to_string();
 }

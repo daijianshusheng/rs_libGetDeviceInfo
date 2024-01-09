@@ -21,7 +21,7 @@ pub fn time_to_beijing(st:&SystemTime)-> String{
 
 //check anti-virus lib
 pub fn get_check_antivirus(osn:&str) -> String{
-    println!("check_antivirus");
+    //println!("check_antivirus");
     let mut res = "".to_string();
     match osn {
         "topsec" =>{
@@ -36,7 +36,7 @@ pub fn get_check_antivirus(osn:&str) -> String{
                     }
                 },
                 Err(_) => {
-                    println!("Failed to get metadata for the file.");
+                    println!("Failed to get virus lib for the file.");
                 }
             };
 
