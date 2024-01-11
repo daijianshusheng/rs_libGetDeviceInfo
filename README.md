@@ -41,7 +41,7 @@
 extern crate get_local_info;
 
 fn main() {
-       println!("{}", get_local_info::get_pc_net_card_name());
+    println!("{}", get_local_info::get_pc_net_card_name());
     println!("{}", get_local_info::get_pc_ipv4());
     println!("{}", get_local_info::get_pc_ipv6());
     println!("{}", get_local_info::get_pc_mac());
@@ -60,8 +60,8 @@ fn main() {
     let antiname = "topsec";
     println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));
     //Traverse all files in the specified directory
-    let idir = "/home/test/rust";
-    println!("{:?}", get_local_info::get_dir(idir));
+    let idir = "/home/test/rust1";
+    println!("{:?}", get_local_info::get_dir_filename(idir));
 }
 ```
 
