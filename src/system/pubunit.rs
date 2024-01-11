@@ -8,9 +8,12 @@
 
 extern crate ini;
 use ini::Ini;
-
+use std::fs;
 use std::process::Command;
 use std::io::Write;
+use std::fs::DirEntry;
+use std::path::Path;
+use std::io;
 
 pub fn doshell_out(ml:&str) -> String{
     let output = Command::new("sh").arg("-c").arg(ml.to_string()).output().expect("err");
@@ -28,4 +31,20 @@ pub fn read_conf(fname:&str,section:&str,key:&str)-> String{
     let section = conf.section(Some(section)).unwrap();
     let res = section.get(key).unwrap();
     return res.to_string();
+}
+
+pub fn visit_dirs(dir: &Path, cb: &dyn Fn(DirEntry,&mut Vec<DirEntry>),vec: &mut Vec<DirEntry>) -> io::Result<()> {
+    if dir.is_dir() {
+        for entry in fs::read_dir(dir)? {
+            let entry = entry?;
+            let path = entry.path();
+            if path.is_dir() {
+                visit_dirs(&path, cb, vec)?;
+            } else {
+                //println!("file => {}", entry.path().to_string_lossy());
+                cb(entry,vec);
+            }
+        }
+    }
+    Ok(())
 }

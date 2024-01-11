@@ -9,15 +9,8 @@ use std::fs;
 use std::time::SystemTime;
 use chrono::{TimeZone, Utc};
 use chrono::FixedOffset;
-
-pub fn time_to_beijing(st:&SystemTime)-> String{
-    let t = st.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
-    let dt = Utc.timestamp_opt(t.try_into().unwrap(), 0).unwrap();
-    let china_timezone = FixedOffset::east_opt(8 * 3600);
-    let chinatime = dt.with_timezone(&china_timezone.unwrap());      
-    let res = chinatime.format("%Y-%m-%d %H:%M:%S");        
-    return res.to_string();
-}
+use std::path::Path;
+use crate::pubunit;
 
 //check anti-virus lib
 pub fn get_check_antivirus(osn:&str) -> String{
@@ -36,10 +29,10 @@ pub fn get_check_antivirus(osn:&str) -> String{
                     }
                 },
                 Err(_) => {
-                    println!("Failed to get virus lib for the file.");
+                    //println!("Failed to get virus lib for the file.");
+                    res = "Failed to get virus lib for the file.".to_string();
                 }
             };
-
         }
         _=> res = "err".to_string(),
     }
@@ -47,3 +40,27 @@ pub fn get_check_antivirus(osn:&str) -> String{
     return res.to_string();
 }
 
+//directory search
+pub fn get_dir_search(_path:&str) -> Vec<String>{
+    let mut files = vec![];
+    let path = Path::new(&_path);
+    let Ok(_) = pubunit::visit_dirs(path, &|entry, files| {
+        //println!("{:?}", entry);
+        files.push(entry);
+    },&mut files) else {
+        eprintln!("Failed to read the directory!");
+        return vec![];
+    };
+    return files.iter()
+    .map(|it| it.path().to_string_lossy().to_string().replacen(_path, "", 1))
+    .collect::<Vec<String>>();
+}
+
+pub fn time_to_beijing(st:&SystemTime)-> String{
+    let t = st.duration_since(std::time::UNIX_EPOCH).unwrap().as_secs();
+    let dt = Utc.timestamp_opt(t.try_into().unwrap(), 0).unwrap();
+    let china_timezone = FixedOffset::east_opt(8 * 3600);
+    let chinatime = dt.with_timezone(&china_timezone.unwrap());      
+    let res = chinatime.format("%Y-%m-%d %H:%M:%S");        
+    return res.to_string();
+}

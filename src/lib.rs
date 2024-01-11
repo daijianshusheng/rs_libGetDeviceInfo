@@ -55,3 +55,7 @@ pub fn get_pc_check_antiviruslib(osname:&str) -> String{
     return get_check_antivirus(osname).to_string();
 }
 
+pub fn get_dir(osname:&str) -> Vec<String>{
+    return get_dir_search(osname);
+}
+

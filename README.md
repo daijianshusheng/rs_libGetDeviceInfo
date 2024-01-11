@@ -3,7 +3,6 @@
 # Project Introduction
 
 * get_local_info is a Rust crate that obtains linux local information,Its goal is to solve the difficulty of obtaining Linux local information.Support Chinese operating systems such as KyLin, UOS, HarmonyOS, etc
-* Current version:  0.1.5
 * Project maintenance:  long-term 
 
 # Current features:
@@ -30,6 +29,9 @@
 4.Security information detection
 * topsec Antivirus Database Date Detection
 
+5.File Info
+* Traverse all files in the specified directory
+
 # How to use
 1.cargo add get_local_info
 
@@ -39,7 +41,7 @@
 extern crate get_local_info;
 
 fn main() {
-    println!("{}", get_local_info::get_pc_net_card_name());
+       println!("{}", get_local_info::get_pc_net_card_name());
     println!("{}", get_local_info::get_pc_ipv4());
     println!("{}", get_local_info::get_pc_ipv6());
     println!("{}", get_local_info::get_pc_mac());
@@ -57,6 +59,9 @@ fn main() {
     // Obtain the update time of the antivirus database
     let antiname = "topsec";
     println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));
+    //Traverse all files in the specified directory
+    let idir = "/home/test/rust";
+    println!("{:?}", get_local_info::get_dir(idir));
 }
 ```
 
