@@ -11,7 +11,6 @@ use pnet::ipnetwork;
 use pnet::datalink::NetworkInterface;
 use std::net::Ipv4Addr;
 use std::net::Ipv6Addr;
-
 pub fn get_ac_net_card_info() -> Vec<NetworkInterface>{
     let interfaces = datalink::interfaces();
     return interfaces;
@@ -83,4 +82,17 @@ pub fn get_ac_mac() -> String{
         }     
     }
     return r.to_string();
+}
+
+//get out ipv4
+pub fn get_ww_ipv4(uri:&str) ->  String {
+    let response =  reqwest::blocking::get(uri).expect("Failed to send request");
+    //println!(" response.status:{}", response.status());
+    if let Ok(body) = response.text() {
+        //println!("Response body:\n{}", body);
+        return body;
+    } else {
+        eprintln!("Failed to read the response body.");
+        return "".to_string();
+    }
 }

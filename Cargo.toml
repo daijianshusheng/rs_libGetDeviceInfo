@@ -1,6 +1,6 @@
 [package]
 name = "get_local_info"
-version = "0.1.9"
+version = "0.2.0"
 authors = ["liuqiang <liulcsy@qq.com>"]
 description = "Getlocalinfo is a Rust crate that obtains local information"
 license = "MIT OR Apache-2.0"
@@ -11,4 +11,5 @@ edition = "2021"
 [dependencies]
 chrono = "0.4.31"
 pnet = "0.34.0"
+reqwest = { version = "0.11.23",features = ["blocking"]}
 rust-ini = "0.19"

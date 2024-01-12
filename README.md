@@ -8,13 +8,13 @@
 # Current features:
 1.Network function
 
-1.1 Obtain activity network card information:
+1.1 Obtain network interface information
+1.2 Obtain activity network card information:
 * Netcard name
 * IPv4
 * IPv6
 * mac
-
-1.2 Obtain network interface information
+* Obtain external IPv4 address
 
 2.Get system version
 * Kylin10 supports 2017 and above
@@ -60,8 +60,10 @@ fn main() {
     let antiname = "topsec";
     println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));
     //Traverse all files in the specified directory
-    let idir = "/home/test/rust1";
+    let idir = "/opt";
     println!("{:?}", get_local_info::get_dir_filename(idir));
+    let uri = "https://api.ipify.org/?format=text";
+    println!("{}", get_local_info::network::get_ww_ipv4(uri));
 }
 ```
 
