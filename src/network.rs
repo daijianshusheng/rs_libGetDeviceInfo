@@ -96,3 +96,10 @@ pub fn get_ww_ipv4(uri:&str) ->  String {
         return "".to_string();
     }
 }
+
+use dns_lookup::lookup_host;
+pub fn get_domain_ip(hostname:&str) ->Vec<std::net::IpAddr> {
+    let ips: Vec<std::net::IpAddr> = lookup_host(hostname).unwrap();
+    //println!("ips:{:?}",ips);
+    return ips;
+}

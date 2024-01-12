@@ -15,6 +15,7 @@ use std::fs::DirEntry;
 use std::path::Path;
 use std::io;
 
+
 pub fn doshell_out(ml:&str) -> String{
     let output = Command::new("sh").arg("-c").arg(ml.to_string()).output().expect("err");
     let res = String::from_utf8(output.stdout).unwrap();

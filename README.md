@@ -9,12 +9,14 @@
 1.Network function
 
 1.1 Obtain network interface information
+
 1.2 Obtain activity network card information:
 * Netcard name
 * IPv4
 * IPv6
 * mac
 * Obtain external IPv4 address
+* Domain name resolution
 
 2.Get system version
 * Kylin10 supports 2017 and above
@@ -64,6 +66,9 @@ fn main() {
     println!("{:?}", get_local_info::get_dir_filename(idir));
     let uri = "https://api.ipify.org/?format=text";
     println!("{}", get_local_info::network::get_ww_ipv4(uri));
+    let hostname = "www.baidu.com";
+    let parse_ip = get_local_info::network::get_domain_ip(hostname);
+    println!("domain parse_ip:{:?}",parse_ip);
 }
 ```
 
