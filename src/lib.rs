@@ -15,7 +15,6 @@ use network::*;
 use system::*;
 use check_av::*;
 
-
 pub fn get_pc_net_card_info() -> Vec<NetworkInterface> {
     return get_ac_net_card_info();
 }

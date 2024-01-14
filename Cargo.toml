@@ -1,8 +1,13 @@
 [package]
 name = "get_local_info"
-version = "0.2.1"
+version = "0.2.2"
 authors = ["liuqiang <liulcsy@qq.com>"]
+readme = "README.md"
+homepage = "https://github.com/daijianshusheng/rs_libGetDeviceInfo"
+repository = "https://github.com/daijianshusheng/rs_libGetDeviceInfo"
 description = "Getlocalinfo is a Rust crate that obtains local information"
+categories = ["network-programming", "parser-implementations"]
+keywords = ["networking", "secure", "local", "info", "linux"]
 license = "MIT OR Apache-2.0"
 edition = "2021"
 
@@ -14,3 +19,4 @@ dns-lookup = "2.0.4"
 pnet = "0.34.0"
 reqwest = { version = "0.11.23",features = ["blocking"]}
 rust-ini = "0.19"
+

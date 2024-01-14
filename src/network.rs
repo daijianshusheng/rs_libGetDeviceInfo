@@ -11,6 +11,8 @@ use pnet::ipnetwork;
 use pnet::datalink::NetworkInterface;
 use std::net::Ipv4Addr;
 use std::net::Ipv6Addr;
+use dns_lookup::lookup_host;
+
 pub fn get_ac_net_card_info() -> Vec<NetworkInterface>{
     let interfaces = datalink::interfaces();
     return interfaces;
@@ -97,7 +99,6 @@ pub fn get_ww_ipv4(uri:&str) ->  String {
     }
 }
 
-use dns_lookup::lookup_host;
 pub fn get_domain_ip(hostname:&str) ->Vec<std::net::IpAddr> {
     let ips: Vec<std::net::IpAddr> = lookup_host(hostname).unwrap();
     //println!("ips:{:?}",ips);
