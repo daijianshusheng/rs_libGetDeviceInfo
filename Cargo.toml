@@ -1,6 +1,6 @@
 [package]
 name = "get_local_info"
-version = "0.2.2"
+version = "0.2.3"
 authors = ["liuqiang <liulcsy@qq.com>"]
 readme = "README.md"
 homepage = "https://github.com/daijianshusheng/rs_libGetDeviceInfo"

@@ -9,11 +9,12 @@ extern crate pnet;
 use pnet::datalink::NetworkInterface;
 
 pub mod network;
-pub mod system;
 pub mod check_av;
+pub mod system;
+pub mod alg;
 use network::*;
-use system::*;
 use check_av::*;
+use system::*;
 
 pub fn get_pc_net_card_info() -> Vec<NetworkInterface> {
     return get_ac_net_card_info();

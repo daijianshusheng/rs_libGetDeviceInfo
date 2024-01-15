@@ -49,3 +49,4 @@ pub fn visit_dirs(dir: &Path, cb: &dyn Fn(DirEntry,&mut Vec<DirEntry>),vec: &mut
     }
     Ok(())
 }
+
