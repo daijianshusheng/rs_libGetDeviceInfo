@@ -34,6 +34,9 @@
 5.File Info
 * Traverse all files in the specified directory
 
+extra features
+* find_peak_element
+
 # How to use
 1.cargo add get_local_info
 
@@ -69,6 +72,8 @@ fn main() {
     let hostname = "www.baidu.com";
     let parse_ip = get_local_info::network::get_domain_ip(hostname);
     println!("domain parse_ip:{:?}",parse_ip);
+    let nums = [3,5,12,45,4,9];
+    println!("{}", get_local_info::alg::find_peak_element(nums.to_vec()));
 }
 ```
 
