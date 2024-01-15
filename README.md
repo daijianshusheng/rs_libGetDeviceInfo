@@ -63,17 +63,18 @@ fn main() {
     println!("multi os:{}", get_local_info::get_pc_system_is_d_sys());
     // Obtain the update time of the antivirus database
     let antiname = "topsec";
-    println!("{}", get_local_info::get_pc_check_antiviruslib(antiname));
+    println!("virus lib time:{}", get_local_info::get_pc_check_antiviruslib(antiname));
+    //find_peak_element
+    let nums = [1];
+    println!("{}", get_local_info::alg::find_peak_element(nums.to_vec()));
     //Traverse all files in the specified directory
     let idir = "/opt";
-    println!("{:?}", get_local_info::get_dir_filename(idir));
+    println!("files:{:?}", get_local_info::get_dir_filename(idir));
     let uri = "https://api.ipify.org/?format=text";
-    println!("{}", get_local_info::network::get_ww_ipv4(uri));
+    println!("wai wang ip:{}", get_local_info::network::get_ww_ipv4(uri));
     let hostname = "www.baidu.com";
     let parse_ip = get_local_info::network::get_domain_ip(hostname);
     println!("domain parse_ip:{:?}",parse_ip);
-    let nums = [3,5,12,45,4,9];
-    println!("{}", get_local_info::alg::find_peak_element(nums.to_vec()));
 }
 ```
 
